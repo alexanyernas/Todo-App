@@ -55,36 +55,32 @@ const Todos = () => {
     return (
         <div className="container">
             <div className="row">
+                
                 <div className="col-6">
                     <h3>Tareas guardadas</h3>
                     <hr />
-
                     <ul className="list-group list-group-flush">
                     {
                             todos.map( ( todo, i ) => ( 
                                 <>
-                                    <li 
-                                        className={ `list-group-item todo-item ${ 'todo-complete' && todo.done }`}
+                                    <p 
+                                        className={`${ todo.done && 'todo-complete' }`}
                                         onClick={ () => handleToggle(todo.id) }
-                                        key={todo.id}
+                                        key={ todo.id }
                                     >
                                         {i+1}. {todo.description}
-                                    </li>
+                                    </p>
 
                                     <button 
                                         onClick= { () => handleDelete(todo.id) }
-                                        className="btn btn-outline-danger "
+                                        className="btn btn-outline-danger"
                                     >
                                         Eliminar
                                     </button>
                                 </>
                             ))
                     }
-
-                        
-
                     </ul>
-                
                 </div>
 
                 <div className="col-6">
@@ -99,9 +95,9 @@ const Todos = () => {
                             type="text"
                             name="description"
                             autoComplete="off"
-                            onChange={handleInputChange}
+                            onChange={ handleInputChange }
                             placeholder="Nueva tarea:"
-                            value={description}
+                            value={ description }
                             className="form-control"
                         />
 
@@ -113,7 +109,6 @@ const Todos = () => {
                             Agregar nueva tarea
                         </button>
                     </form>
-
                 </div>
             </div>
         </div>
